@@ -10,7 +10,7 @@ namespace EO1BOA_HFT_2023241.Repository
 {
     public class BakeryDbContext : DbContext
     {
-        public virtual DbSet<Bread> Bready { get; set; }
+        public virtual DbSet<Bread> Bread { get; set; }
         public virtual DbSet<Bakery> Bakeries { get; set; }
         public virtual DbSet<Oven> Ovens { get; set; }
 
