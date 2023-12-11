@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace EO1BOA_HFT_2023241.Repository
 {
-    public class OvenRepository : Repository<Oven>
+    public class BakeryRepository : Repository<Bakery>
     {
-        public OvenRepository(BakeryDbContext ctor) : base(ctor)
+        public BakeryRepository(BakeryDbContext ctor) : base(ctor)
         {
         }
-
-        public override Oven Read(int id)
+        public override Bakery Read(int id)
         {
-            return dbcontext.Ovens.FirstOrDefault(x => x.OvenId == id);
+            return dbcontext.Bakeries.FirstOrDefault(x=>x.BakeryId == id);
         }
 
-        public override void Update(Oven obj)
+        public override void Update(Bakery obj)
         {
-            var old = Read(obj.OvenId);
+            var old = Read(obj.BakeryId);
             foreach (var item in obj.GetType().GetProperties())
             {
                 item.SetValue(old, item.GetValue(obj));

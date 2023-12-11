@@ -20,9 +20,11 @@ namespace EO1BOA_HFT_2023241.Repository
         public override void Update(Bread obj)
         {
             var old = Read(obj.BreadId);
-            foreach (var item in obj.GetType().GetProperties()) {
+            foreach (var item in obj.GetType().GetProperties()) 
+            {
                 item.SetValue(old, item.GetValue(obj));
             }
+            dbcontext.SaveChanges();
         }
     }
 }
