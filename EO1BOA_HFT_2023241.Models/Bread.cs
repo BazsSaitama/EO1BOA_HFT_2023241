@@ -15,9 +15,8 @@ namespace EO1BOA_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BreadId { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
         public bool IsDessert { get; set; } //Is it Sweets or Regular Bread
-        public int Weight { get; set; }
+        public int Weight { get; set; } //gramms
 
         [ForeignKey(nameof(Bakery))]
         public int BakeryId { get; set; }

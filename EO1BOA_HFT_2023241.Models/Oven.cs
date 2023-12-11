@@ -15,8 +15,8 @@ namespace EO1BOA_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OvenId { get; set; }
         public int BreadCapacity { get; set; } //How many breads fit
-        public int NunmberOfMaterials { get; set; }
-        public int BakingTime { get; set; }
+        public int BakingTime { get; set; } //Second
+        public double Price { get; set; } //Mft
 
         [ForeignKey("Bread")]
         public int BreadId { get; set; }
