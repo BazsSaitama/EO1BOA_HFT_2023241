@@ -26,6 +26,14 @@ namespace EO1BOA_HFT_2023241.Client
                 {
                     property.SetValue(instance, int.Parse(input));
                 }
+                else if (property.PropertyType == typeof(double))
+                {
+                    property.SetValue(instance, double.Parse(input));
+                }
+                else if (property.PropertyType == typeof(bool))
+                {
+                    property.SetValue(instance, bool.Parse(input));
+                }
                 else
                 {
                     property.SetValue(instance, input);
@@ -71,7 +79,7 @@ namespace EO1BOA_HFT_2023241.Client
                 }
                 else
                 {
-                    property.SetValue(instance, input);
+                    property.SetValue(instance, bool.Parse(input));
                 }
             }
             rest.Put(instance, typeof(T).Name);

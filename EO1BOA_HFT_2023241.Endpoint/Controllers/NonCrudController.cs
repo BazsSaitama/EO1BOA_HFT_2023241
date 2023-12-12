@@ -23,14 +23,14 @@ namespace EO1BOA_HFT_2023241.Endpoint.Controllers
         //public IQueryable<Bread> AllSweetsFromBakery(string bakery);
         //public Bread LightestBread();
 
-        [HttpGet]
+        [HttpGet("{capacity}")]
         public IQueryable<Oven> OvensByCapacity(int capacity)
         {
             return logic.OvensByCapacity(capacity);
         }
 
-        [HttpGet]
-        public IQueryable<Bread> BarrelsByMaterial(string bakery)
+        [HttpGet("{bakery}")]
+        public IQueryable<Bread> AllBreadsFromBakery(string bakery)
         {
             return logic.AllBreadsFromBakery(bakery);
         }
@@ -41,14 +41,14 @@ namespace EO1BOA_HFT_2023241.Endpoint.Controllers
             return logic.MostExpensiveOvenInBakery();
         }
 
-        [HttpGet]
+        [HttpGet("{bakery}")]
         public IQueryable<Bread> AllSweetsFromBakery([FromQuery] string bakery)
         {
             return logic.AllSweetsFromBakery(bakery);
         }
 
         [HttpGet]
-        public Bread BiggestBarrelInWinery()
+        public Bread LightestBread()
         {
             return logic.LightestBread();
         }

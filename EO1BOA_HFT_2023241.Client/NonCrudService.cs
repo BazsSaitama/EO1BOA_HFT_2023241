@@ -26,7 +26,7 @@ namespace EO1BOA_HFT_2023241.Client
         {
             try
             {
-                Console.WriteLine("Ovens: [1,2,3,4]");
+                Console.WriteLine("Please give a number to List the according ovens! [2,14,21]");
                 string ovens = Console.ReadLine();
                 var items = restService.Get<Oven>($"/NonCrud/OvensByCapacity/{ovens}");
                 foreach (var item in items)
@@ -49,7 +49,7 @@ namespace EO1BOA_HFT_2023241.Client
         {
             try
             {
-                Console.WriteLine("All Breads:");
+                Console.WriteLine("To List all Breads, please enter a bakery[Szaszkó Pékség,Müller Pékség,Niki Pékség, Champion Pékség]:");
                 string breads = Console.ReadLine();
                 var items = restService.Get<Bread>($"/NonCrud/AllBreadsFromBakery/{breads}");
                 foreach (var item in items)
@@ -70,7 +70,7 @@ namespace EO1BOA_HFT_2023241.Client
         {
             Console.WriteLine("Most Expensive Oven in the Bakery:");
             var item = restService.GetSingle<Oven>($"/NonCrud/MostExpensiveOvenInBakery/");
-            Console.WriteLine(item.OvenId + "\t" + item.Price);
+            Console.WriteLine("OvenID: " + item.OvenId + "\t" + item.Price);
             Console.WriteLine("");
             Console.WriteLine("Press any button to return");
             Console.ReadKey();
@@ -81,7 +81,7 @@ namespace EO1BOA_HFT_2023241.Client
 
             try
             {
-                Console.WriteLine("All the sweet from bakery:");
+                Console.WriteLine("All the sweet from bakery: [Szaszkó Pékség,Müller Pékség,Niki Pékség, Champion Pékség]");
                 string bakery = Console.ReadLine();
                 var bakeries = restService.Get<Bread>($"/NonCrud/AllSweetsFromBakery/{bakery}");
                 foreach (var item in bakeries)

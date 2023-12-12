@@ -23,6 +23,7 @@ namespace EO1BOA_HFT_2023241.Repository
         public void Delete(int id)
         {
             dbcontext.Set<T>().Remove(Read(id));
+            dbcontext.SaveChanges();
         }
 
         public abstract T Read(int id);
