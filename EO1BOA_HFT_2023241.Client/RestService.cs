@@ -100,14 +100,38 @@ namespace EO1BOA_HFT_2023241.Client
         }
         public void Post<T>(T item, string endpoint)
         {
-            HttpResponseMessage response =
-                client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
             if (!response.IsSuccessStatusCode)
             {
                 var error = response.Content.ReadAsAsync<RestException>().GetAwaiter().GetResult();
                 throw new ArgumentException(error.Msg);
             }
+            response.EnsureSuccessStatusCode();
+        }
+        public void Delete(int id, string endpoint)
+        {
+            HttpResponseMessage response = client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsAsync<RestException>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+
+            response.EnsureSuccessStatusCode();
+        }
+
+        public void Put<T>(T item, string endpoint)
+        {
+            HttpResponseMessage response = client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsAsync<RestException>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+
             response.EnsureSuccessStatusCode();
         }
     }
