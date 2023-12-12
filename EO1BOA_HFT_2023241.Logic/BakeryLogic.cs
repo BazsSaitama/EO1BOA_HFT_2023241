@@ -54,5 +54,51 @@ namespace EO1BOA_HFT_2023241.Logic
         {
             this.repo.Update(bakery);
         }
+
+        public IQueryable<Oven> OvensByCapacity(int capacity)
+        {
+            var ovenlist = from b in repo.ReadAll()
+                           from bread in b.Breads
+                           from d in bread.Ovens
+                           where d.BreadCapacity == capacity
+                           select d;
+            return ovenlist;
+        }
+        public IQueryable<Bread> AllBreadsFromBakery(string bakery)
+        {
+            var breads = from b in repo.ReadAll()
+                         where b.Name == bakery
+                         from bread in b.Breads
+                         select bread;
+            return breads;
+        }
+        public Oven MostExpensiveOvenInBakery(string bakery) 
+        {
+            var money = from b in repo.ReadAll()
+                        from breads in b.Breads
+                        from oven in breads.Ovens
+                        orderby oven.Price descending
+                        select oven; 
+            return money.First();
+        }
+        public IQueryable<Bread> AllSweetsFromBakery(string bakery)
+        {
+            var sweets = from b in repo.ReadAll()
+                         from breads in b.Breads
+                         where breads.IsDessert == true
+                         select breads;
+            return sweets;
+        }
+        public Bread LightestBread(string bakery) 
+        {
+            var bread = from b in repo.ReadAll()
+                        from d in b.Breads
+                        where b.Name == bakery
+                        orderby d.Weight ascending
+                        select d;
+            return bread.First();
+        }
+
+
     }
 }
