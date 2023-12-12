@@ -72,7 +72,7 @@ namespace EO1BOA_HFT_2023241.Logic
                          select bread;
             return breads;
         }
-        public Oven MostExpensiveOvenInBakery(string bakery) 
+        public Oven MostExpensiveOvenInBakery() 
         {
             var money = from b in repo.ReadAll()
                         from breads in b.Breads
@@ -85,15 +85,15 @@ namespace EO1BOA_HFT_2023241.Logic
         {
             var sweets = from b in repo.ReadAll()
                          from breads in b.Breads
+                         where b.Name == bakery
                          where breads.IsDessert == true
                          select breads;
             return sweets;
         }
-        public Bread LightestBread(string bakery) 
+        public Bread LightestBread() 
         {
             var bread = from b in repo.ReadAll()
                         from d in b.Breads
-                        where b.Name == bakery
                         orderby d.Weight ascending
                         select d;
             return bread.First();

@@ -58,7 +58,7 @@ namespace EO1BOA_HFT_2023241.Test
             breead.Name = "Kovászos kifli";
             breead.IsDessert = false;
             breead.Ovens = new List<Oven>();
-            breead.Weight = 168;
+            breead.Weight = 2;
             breead.BakeryId = 4;
 
             Bakery bakeery = new Bakery();
@@ -70,7 +70,7 @@ namespace EO1BOA_HFT_2023241.Test
             Oven oveen = new Oven();
             oven.BreadCapacity = 1;
             oven.BakingTime = 2;
-            oven.Price = 0.5;
+            oven.Price = 5;
             oven.BreadId = 1;
 
             oveen.Bread = breead;
@@ -123,7 +123,7 @@ namespace EO1BOA_HFT_2023241.Test
         //public Bread LightestBread(string bakery);
 
         [Test]
-        public void ListOvensByCapacity()
+        public void ListOvensByCapacityTest()
         {
             int capacityTest = 2;
             var result = bakeryLogic.OvensByCapacity(capacityTest);
@@ -132,7 +132,19 @@ namespace EO1BOA_HFT_2023241.Test
             Assert.IsTrue(result.All(x => x.BreadCapacity == capacityTest));
         }
         [Test]
-        public void ListBreadsByBakery()
+        public void ListOvensByCapacity_EmptyListTest()
+        {
+            int nonExistingVintage = 13;
+
+            var result = bakeryLogic.OvensByCapacity(nonExistingVintage);
+
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Any());
+        }
+
+
+        [Test]
+        public void ListBreadsByBakeryTest()
         {
             string peksegNevTest = "Niki Pékség"; //Bugfixed in Dbset
             var result = bakeryLogic.AllBreadsFromBakery(peksegNevTest);
@@ -142,13 +154,33 @@ namespace EO1BOA_HFT_2023241.Test
         }
 
         [Test]
-        public void ListBreadsByBakery2_NoBakeryLikeThis_ReturnsFalse() 
+        public void ListBreadsByBakery2_NoBakeryLikeThis_ReturnsFalseTest() 
         {
             string peksegNevTest = "asd Pékség";
             var result = bakeryLogic.AllBreadsFromBakery(peksegNevTest);
 
             Assert.IsEmpty(result);
            
+        }
+        [Test]
+        public void MostExpensiveOvenTest() 
+        {
+            var result = bakeryLogic.MostExpensiveOvenInBakery();
+            Assert.AreEqual(result.Price, 5);
+        }
+        [Test]
+        public void LightestBreadTest()
+        {
+            var result = bakeryLogic.LightestBread();
+            Assert.AreEqual(result.Weight, 2);
+        }
+        [Test]
+        public void AllSweetsFromBakeryTest()
+        {
+            string bakerytest = "Niki péség";
+            var result = bakeryLogic.AllSweetsFromBakery(bakerytest);
+            Assert.NotNull(result);
+            Assert.IsTrue(result.All(x => x.IsDessert == true));
         }
 
     }

@@ -16,9 +16,9 @@ namespace EO1BOA_HFT_2023241.Logic.Interfaces
         void Delete(int id);
         public IQueryable<Oven> OvensByCapacity(int capacity);
         public IQueryable<Bread> AllBreadsFromBakery(string bakery);
-        public Oven MostExpensiveOvenInBakery(string bakery);
+        public Oven MostExpensiveOvenInBakery();
         public IQueryable<Bread> AllSweetsFromBakery(string bakery);
-        public Bread LightestBread(string bakery);
+        public Bread LightestBread();
 
     }
 }
