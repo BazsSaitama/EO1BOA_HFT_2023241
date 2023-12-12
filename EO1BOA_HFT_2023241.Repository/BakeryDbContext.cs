@@ -32,7 +32,7 @@ namespace EO1BOA_HFT_2023241.Repository
 
             bakeries.Add(new Bakery() {BakeryId=1,Location="Kunszentmárton",Rating=4.2,Name="Szaszkó Pékség" });
             bakeries.Add(new Bakery() { BakeryId = 2, Location = "Budapest", Rating = 4.8, Name = "Müller Pékség" });
-            bakeries.Add(new Bakery() { BakeryId = 3, Location = "Sopron", Rating = 4.4, Name = "Niki pékség" });
+            bakeries.Add(new Bakery() { BakeryId = 3, Location = "Sopron", Rating = 4.4, Name = "Niki Pékség" });
             bakeries.Add(new Bakery() { BakeryId = 4, Location = "Siófok", Rating = 4.0, Name = "Champion Pékség" });
 
             var breads = new List<Bread>();

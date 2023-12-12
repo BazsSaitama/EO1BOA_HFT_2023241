@@ -20,7 +20,7 @@ namespace EO1BOA_HFT_2023241.Logic
 
         public void Create(Oven oven)
         {
-            if (oven.Price < 0 || oven.BreadCapacity < 0 || oven.BakingTime < 0 )
+            if (oven.Price < 0 || oven.BreadCapacity <= 0 || oven.BakingTime <= 0 )
             {
                 throw new ArgumentException();
             }

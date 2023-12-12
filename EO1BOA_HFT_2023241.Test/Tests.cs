@@ -89,7 +89,7 @@ namespace EO1BOA_HFT_2023241.Test
             bakeryLogic = new BakeryLogic(mockBakeryRepository.Object);
             ovenLogic = new OvenLogic(mockOvenRepository.Object);
         }
-        //3db Create test
+        //3 Create tests
         [Test]
         public void BakeryCreateTest()
         {
@@ -101,7 +101,7 @@ namespace EO1BOA_HFT_2023241.Test
         [Test]
         public void BreadCreateTest()
         {
-            Bread testbread = new Bread() { BreadId = 1, Weight = 260, Name = "Kakaós Csiga", IsDessert = true};
+            Bread testbread = new Bread() { BreadId = 1, Weight = 250, Name = "Kakaós Csiga", IsDessert = true};
             breadLogic.Create(testbread);
             mockBreadRepository.Verify(w => w.Create(testbread), Times.Once);
             Assert.IsNotNull(testbread);
@@ -110,10 +110,46 @@ namespace EO1BOA_HFT_2023241.Test
         [Test]
         public void OvenCreateTest()
         {
-            Oven testoven = new Oven() { OvenId = 1, Price = 1.1, BakingTime = 2, BreadCapacity = 3};
+            Oven testoven = new Oven() { Price = 2, BakingTime = 1, BreadCapacity = 1};
             ovenLogic.Create(testoven);
             mockOvenRepository.Verify(b => b.Create(testoven), Times.Once);
             Assert.IsNotNull(testoven);
         }
+        //7 Tests Non Cruds:
+        //public IQueryable<Oven> OvensByCapacity(int capacity);
+        //public IQueryable<Bread> AllBreadsFromBakery(string bakery);
+        //public Oven MostExpensiveOvenInBakery(string bakery);
+        //public IQueryable<Bread> AllSweetsFromBakery(string bakery);
+        //public Bread LightestBread(string bakery);
+
+        [Test]
+        public void ListOvensByCapacity()
+        {
+            int capacityTest = 2;
+            var result = bakeryLogic.OvensByCapacity(capacityTest);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.All(x => x.BreadCapacity == capacityTest));
+        }
+        [Test]
+        public void ListBreadsByBakery()
+        {
+            string peksegNevTest = "Niki Pékség"; //Bugfixed in Dbset
+            var result = bakeryLogic.AllBreadsFromBakery(peksegNevTest);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.All(x => x.Name == peksegNevTest));
+        }
+
+        [Test]
+        public void ListBreadsByBakery2_NoBakeryLikeThis_ReturnsFalse() 
+        {
+            string peksegNevTest = "asd Pékség";
+            var result = bakeryLogic.AllBreadsFromBakery(peksegNevTest);
+
+            Assert.IsEmpty(result);
+           
+        }
+
     }
 }
