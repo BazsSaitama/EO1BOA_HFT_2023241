@@ -20,7 +20,7 @@ namespace EO1BOA_HFT_2023241.Logic
 
         public void Create(Bread bread)
         {
-            if (bread.Weight > 0)
+            if (bread.Weight < 0)
             {
                 throw new ArgumentException();
             }

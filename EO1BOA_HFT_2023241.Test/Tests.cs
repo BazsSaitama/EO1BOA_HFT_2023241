@@ -89,5 +89,31 @@ namespace EO1BOA_HFT_2023241.Test
             bakeryLogic = new BakeryLogic(mockBakeryRepository.Object);
             ovenLogic = new OvenLogic(mockOvenRepository.Object);
         }
+        //3db Create test
+        [Test]
+        public void BakeryCreateTest()
+        {
+            Bakery testbakery = new Bakery() { BakeryId = 1, Name = "Culi Pékség", Location = "Kistarcsa" };
+            bakeryLogic.Create(testbakery);
+            mockBakeryRepository.Verify(w => w.Create(testbakery), Times.Once);
+            Assert.IsNotNull(testbakery);
+        }
+        [Test]
+        public void BreadCreateTest()
+        {
+            Bread testbread = new Bread() { BreadId = 1, Weight = 260, Name = "Kakaós Csiga", IsDessert = true};
+            breadLogic.Create(testbread);
+            mockBreadRepository.Verify(w => w.Create(testbread), Times.Once);
+            Assert.IsNotNull(testbread);
+        }
+
+        [Test]
+        public void OvenCreateTest()
+        {
+            Oven testoven = new Oven() { OvenId = 1, Price = 1.1, BakingTime = 2, BreadCapacity = 3};
+            ovenLogic.Create(testoven);
+            mockOvenRepository.Verify(b => b.Create(testoven), Times.Once);
+            Assert.IsNotNull(testoven);
+        }
     }
 }
