@@ -3,6 +3,7 @@ using EO1BOA_HFT_2023241.Logic.Interfaces;
 using EO1BOA_HFT_2023241.Models;
 using EO1BOA_HFT_2023241.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -40,7 +41,7 @@ namespace EO1BOA_HFT_2023241.Endpoint
             services.AddControllers();
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "EO1BOA_HFT_2023241_Endpoint", Version = "v1" });
+                x.SwaggerDoc("v1", new OpenApiInfo { Title = "EO1BOA_HFT_2023241.Endpoint", Version = "v1" });
             });
         }
 
@@ -50,17 +51,25 @@ namespace EO1BOA_HFT_2023241.Endpoint
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "EO1BOA_HFT_2023241.Endpoint v1"));
             }
 
-            app.UseRouting();
+            app.UseExceptionHandler(x => x.Run(async context =>
+            {
+                var exception = context.Features.Get<IExceptionHandlerPathFeature>().Error;
+                var response = new { error = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
 
+            app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
+
+            
         }
     }
 }
