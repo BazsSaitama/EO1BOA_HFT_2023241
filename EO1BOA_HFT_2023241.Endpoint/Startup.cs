@@ -1,3 +1,4 @@
+using EO1BOA_HFT_2023241.Endpoint.Services;
 using EO1BOA_HFT_2023241.Logic;
 using EO1BOA_HFT_2023241.Logic.Interfaces;
 using EO1BOA_HFT_2023241.Models;
@@ -67,8 +68,8 @@ namespace EO1BOA_HFT_2023241.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
-
             
         }
     }
