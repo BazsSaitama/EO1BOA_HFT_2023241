@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EO1BOA_GUI_2023242_WPF_Client", "EO1BOA_GUI_2023242_WPF_Client\EO1BOA_GUI_2023242_WPF_Client.csproj", "{EF49FE90-DA6F-431E-836D-8952D7530F81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{55D50A95-9189-4F21-A53A-6D78FB95126E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D50A95-9189-4F21-A53A-6D78FB95126E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D50A95-9189-4F21-A53A-6D78FB95126E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF49FE90-DA6F-431E-836D-8952D7530F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF49FE90-DA6F-431E-836D-8952D7530F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF49FE90-DA6F-431E-836D-8952D7530F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF49FE90-DA6F-431E-836D-8952D7530F81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{257E327D-00DB-44B3-9169-965518DFBD96} = {C945016C-0552-462E-86CC-98EED0783A55}
 		{67AE3B06-1DF3-489E-94EB-2CD1AB97984F} = {C945016C-0552-462E-86CC-98EED0783A55}
 		{55D50A95-9189-4F21-A53A-6D78FB95126E} = {C945016C-0552-462E-86CC-98EED0783A55}
+		{EF49FE90-DA6F-431E-836D-8952D7530F81} = {977AB5AC-8690-4E15-A8A6-5E5F7E8033BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0DF7CA7-AA5C-4958-8C81-10030AE2E092}
