@@ -9,11 +9,11 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid Margin="0,0,0,-97">
-        <StackPanel Margin="0,0,0,54">
-            <Button Width="200" Height="50" Content="Bakery" Margin="0,10,0,10"></Button>
-            <Button Width="200" Height="50" Content="Bread" Margin="0,10,0,10"></Button>
-            <Button Width="200" Height="50" Content="Oven" Margin="0,10,0,10"></Button>
+    <Grid Margin="0,0,0,-16" Background="White">
+        <StackPanel>
+            <Button Width="200" Height="50" Content="Bakery" Margin="0,10,0,10" Command="{Binding GetBakeryCommand}" FontSize="19" Background="Aqua"></Button>
+            <Button Width="200" Height="50" Content="Bread" Margin="0,10,0,10" Command="{Binding GetBreadCommand}" FontSize="19" Background="Aqua"></Button>
+            <Button Width="200" Height="50" Content="Oven" Margin="0,10,0,10" Command="{Binding GetOvensCommand}" FontSize="19" Background="Aqua"></Button>
         </StackPanel>
     </Grid>
 </Window>
