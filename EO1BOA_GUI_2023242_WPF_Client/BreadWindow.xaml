@@ -26,6 +26,19 @@
             <Button Content="Update Bread" Padding="10" Margin="0,15,0,15"></Button>
             <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15"></Button>
         </StackPanel>
-
+        <Grid Grid.Column="1">
+            <ListBox HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Breads}" SelectedItem="{Binding SelectedBread}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Content="{Binding Name}"></Label>
+                            <Label Content="{Binding IsDessert}"></Label>
+                            <Label Content="{Binding Weight}"></Label>
+                            <Label Content="{Binding BakeryID}"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Window>

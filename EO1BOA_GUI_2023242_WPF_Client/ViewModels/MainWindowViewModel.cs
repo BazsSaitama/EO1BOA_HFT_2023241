@@ -20,7 +20,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client
         IOvenService ovenService;
         IBreadService breadService;
 
-        public RestCollection<Bakery> bakery { get; set; }
+        public RestCollection<Bakery> bakeries { get; set; }
         public RestCollection<Oven> ovens { get; set; }
         public RestCollection<Bread> breads { get; set; }
 
@@ -41,9 +41,9 @@ namespace EO1BOA_GUI_2023242_WPF_Client
         {
             if (!IsInDesignMode)
             {
-                bakery = new RestCollection<Bakery>("http://localhost:7332/", "Bakery", "hub");
-                ovens = new RestCollection<Oven>("http://localhost:7332/", "Oven", "hub");
-                breads = new RestCollection<Bread>("http://localhost:7332/", "Bread", "hub");
+                bakeries = new RestCollection<Bakery>("http://localhost:39340/", "Bakery", "hub");
+                ovens = new RestCollection<Oven>("http://localhost:39340/", "Oven", "hub");
+                breads = new RestCollection<Bread>("http://localhost:39340/", "Bread", "hub");
 
 
                 bakeryService = Ioc.Default.GetRequiredService<IBakeryService>();
@@ -51,15 +51,15 @@ namespace EO1BOA_GUI_2023242_WPF_Client
                 breadService = Ioc.Default.GetRequiredService<IBreadService>();
 
                 GetBakeryCommand = new RelayCommand(
-                    () => bakeryService.Open(bakery,breads,ovens),
+                    () => bakeryService.Open(bakeries, breads),
                     () => true
                     );
                 GetOvensCommand = new RelayCommand(
-                    () => ovenService.Open(bakery,ovens),
+                    () => ovenService.Open(ovens, breads),
                     () => true
                     );
                 GetBreadCommand = new RelayCommand(
-                    () => breadService.Open(breads,ovens),
+                    () => breadService.Open(breads, ovens, bakeries),
                     () => true
                     );
             }

@@ -21,9 +21,9 @@ namespace EO1BOA_GUI_2023242_WPF_Client
     /// </summary>
     public partial class BreadWindow : Window
     {
-        public BreadWindow(RestCollection<Bread> Breads,RestCollection<Oven> Ovens, RestCollection<Bakery> bakeries)
+        public BreadWindow(RestCollection<Bread> Breads,RestCollection<Oven> Ovens, RestCollection<Bakery> Bakeries)
         {
-            DataContext = new BreadViewModel(Breads, Ovens, bakeries);
+            DataContext = new BreadViewModel(Breads, Ovens, Bakeries);
             InitializeComponent();
         }
     }
