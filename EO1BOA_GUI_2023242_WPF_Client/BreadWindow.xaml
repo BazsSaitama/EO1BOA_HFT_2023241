@@ -6,7 +6,26 @@
         xmlns:local="clr-namespace:EO1BOA_GUI_2023242_WPF_Client"
         mc:Ignorable="d"
         Title="BreadWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Aqua">
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,533,0" Grid.RowSpan="3">
+            <Label Padding="10px" VerticalAlignment="Center">Name</Label>
+            <TextBox ></TextBox>
+            <Label>IsDessert</Label>
+            <RadioButton GroupName="IsDessertRadio">Yes</RadioButton>
+            <RadioButton GroupName="IsDessertRadio">No</RadioButton>
+            <Label>Weight</Label>
+            <TextBox></TextBox>
+            <Label>Bakery ID</Label>
+            <TextBox></TextBox>
+            <Button Content="Create Bread" Padding="10" Margin="0,15,0,15"></Button>
+            <Button Content="Update Bread" Padding="10" Margin="0,15,0,15"></Button>
+            <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15"></Button>
+        </StackPanel>
+
     </Grid>
 </Window>
