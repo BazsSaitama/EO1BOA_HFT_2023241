@@ -11,7 +11,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.Services
     {
         public void Open(RestCollection<Bread> Bread, RestCollection<Oven> Oven)
         {
-            //new BreadWindow(Bread, Oven).Show();
+            new BreadWindow(Bread, Oven).Show();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace EO1BOA_HFT_2023241.Endpoint.Controllers
     {
         IBakeryLogic logic;
 
+
         public NonCrudController(IBakeryLogic logic)
         {
             this.logic = logic;

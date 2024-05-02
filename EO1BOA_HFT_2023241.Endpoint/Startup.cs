@@ -37,7 +37,7 @@ namespace EO1BOA_HFT_2023241.Endpoint
             services.AddTransient<IBreadLogic, BreadLogic>();
             services.AddTransient<IBakeryLogic, BakeryLogic>();
             services.AddTransient<IOvenLogic, OvenLogic>();
-
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(x =>
@@ -62,6 +62,12 @@ namespace EO1BOA_HFT_2023241.Endpoint
                 var response = new { error = exception.Message };
                 await context.Response.WriteAsJsonAsync(response);
             }));
+
+            app.UseCors(x => x
+             .AllowCredentials()
+             .AllowAnyMethod()
+             .AllowAnyHeader()
+             .WithOrigins("http://localhost:39340"));
 
             app.UseRouting();
             app.UseAuthorization();

@@ -14,18 +14,31 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,533,0" Grid.RowSpan="3">
             <Label Padding="10px" VerticalAlignment="Center">Name</Label>
-            <TextBox ></TextBox>
+            <TextBox Height="24" ></TextBox>
             <Label>IsDessert</Label>
             <RadioButton GroupName="IsDessertRadio">Yes</RadioButton>
             <RadioButton GroupName="IsDessertRadio">No</RadioButton>
             <Label>Weight</Label>
-            <TextBox></TextBox>
+            <TextBox Height="31"></TextBox>
             <Label>Bakery ID</Label>
-            <TextBox></TextBox>
+            <TextBox Height="33"></TextBox>
             <Button Content="Create Bread" Padding="10" Margin="0,15,0,15"></Button>
             <Button Content="Update Bread" Padding="10" Margin="0,15,0,15"></Button>
             <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15"></Button>
         </StackPanel>
-
+        <Grid Grid.Column="1">
+            <ListBox HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Breads}" SelectedItem="{Binding SelectedBread}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Content="{Binding Name}"></Label>
+                            <Label Content="{Binding IsDessert}"></Label>
+                            <Label Content="{Binding Weight}"></Label>
+                            <Label Content="{Binding BakeryID}"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Window>
