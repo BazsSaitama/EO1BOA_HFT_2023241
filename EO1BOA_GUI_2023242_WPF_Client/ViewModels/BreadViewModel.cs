@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EO1BOA_GUI_2023242_WPF_Client.Services;
 using EO1BOA_HFT_2023241.Models;
 using System;
 using System.Collections.Generic;

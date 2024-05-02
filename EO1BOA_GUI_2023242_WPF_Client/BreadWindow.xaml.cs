@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using EO1BOA_GUI_2023242_WPF_Client.ViewModels;
+using EO1BOA_GUI_2023242_WPF_Client.Services;
 
 namespace EO1BOA_GUI_2023242_WPF_Client
 {
