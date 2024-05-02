@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EO1BOA_HFT_2023241.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EO1BOA_GUI_2023242_WPF_Client.ViewModels;
 
 namespace EO1BOA_GUI_2023242_WPF_Client
 {
@@ -19,8 +21,9 @@ namespace EO1BOA_GUI_2023242_WPF_Client
     /// </summary>
     public partial class OvenWindow : Window
     {
-        public OvenWindow()
+        public OvenWindow(RestCollection<Oven> ovens,RestCollection<Bread> breads)
         {
+            DataContext = new OvenViewModel(ovens,breads);
             InitializeComponent();
         }
     }

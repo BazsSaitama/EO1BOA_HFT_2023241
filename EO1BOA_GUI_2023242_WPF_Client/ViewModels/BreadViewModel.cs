@@ -12,5 +12,10 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
     {
         public bool IsSelected { get; set; } = false;
         public RestCollection<Bread> Breads { get; set; }
+
+        public BreadViewModel(RestCollection<Bread> breads,RestCollection<Oven> ovens,RestCollection<Bakery> bakeries) 
+        {
+            ;
+        }
     }
 }

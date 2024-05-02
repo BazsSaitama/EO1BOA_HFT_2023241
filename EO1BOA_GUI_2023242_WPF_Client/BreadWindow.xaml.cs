@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EO1BOA_GUI_2023242_WPF_Client.ViewModels;
 
 namespace EO1BOA_GUI_2023242_WPF_Client
 {
@@ -20,9 +21,9 @@ namespace EO1BOA_GUI_2023242_WPF_Client
     /// </summary>
     public partial class BreadWindow : Window
     {
-        public BreadWindow(RestCollection<Bread> Breads,RestCollection<Oven> Ovens)
+        public BreadWindow(RestCollection<Bread> Breads,RestCollection<Oven> Ovens, RestCollection<Bakery> bakeries)
         {
-            DataContext = new BreadWindow(Breads, Ovens);
+            DataContext = new BreadViewModel(Breads, Ovens, bakeries);
             InitializeComponent();
         }
     }

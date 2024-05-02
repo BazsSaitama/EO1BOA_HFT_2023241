@@ -9,9 +9,9 @@ namespace EO1BOA_GUI_2023242_WPF_Client.Services
 {
     class OvensViaWindow : IOvenService
     {
-        public void Open(RestCollection<Bakery> Bakery, RestCollection<Oven> Oven)
+        public void Open(RestCollection<Oven> Oven, RestCollection<Bread> Breads)
         {
-            //new OvenWindow(Bakery, Oven).Show();
+            new OvenWindow(Oven, Breads).Show();
         }
     }
 }

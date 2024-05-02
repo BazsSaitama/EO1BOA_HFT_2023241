@@ -10,7 +10,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.Services
 {
     interface IBakeryService
     {
-        public void Open(RestCollection<Bakery> Bakery, RestCollection<Bread> Breads, RestCollection<Oven> Oven);
+        public void Open(RestCollection<Bakery> Bakery, RestCollection<Bread> Bread);
 
     }
 }
