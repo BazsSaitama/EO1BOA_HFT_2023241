@@ -20,9 +20,9 @@
             <TextBox Text="{Binding SelectedBread.Weight}"></TextBox>
             <Label Content="Pékség Azonosító:" FontSize="15" FontWeight="Heavy" FontFamily="arial"></Label>
             <TextBox Text="{Binding SelectedBread.BakeryId}"></TextBox>
-            <Button Content="Create Bread" Padding="10" Margin="0,15,0,15"></Button>
-            <Button Content="Update Bread" Padding="10" Margin="0,15,0,15"></Button>
-            <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15"></Button>
+            <Button Content="Create Bread" Padding="10" Margin="0,15,0,15" Command="{Binding CreateBreadCommand}"></Button>
+            <Button Content="Update Bread" Padding="10" Margin="0,15,0,15" Command="{Binding UpdateBreadCommand}"></Button>
+            <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15" Command="{Binding DeleteBreadCommand}"></Button>
         </StackPanel>
         <Grid Grid.Column="1">
             <ListBox HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Breads}" SelectedItem="{Binding SelectedBread}">

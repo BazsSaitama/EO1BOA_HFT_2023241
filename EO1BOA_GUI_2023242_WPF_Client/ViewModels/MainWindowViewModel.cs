@@ -42,8 +42,8 @@ namespace EO1BOA_GUI_2023242_WPF_Client
             if (!IsInDesignMode)
             {
                 bakeries = new RestCollection<Bakery>("http://localhost:39340/", "Bakery", "hub");
-                ovens = new RestCollection<Oven>("http://localhost:39340/", "Oven", "hub");
-                breads = new RestCollection<Bread>("http://localhost:39340/", "Bread", "hub");
+                ovens = new RestCollection<Oven>("http://localhost:39340/", "Oven", "hub", new List<RestCollection> {bakeries});
+                breads = new RestCollection<Bread>("http://localhost:39340/", "Bread", "hub", new List<RestCollection> {bakeries});
 
 
                 bakeryService = Ioc.Default.GetRequiredService<IBakeryService>();

@@ -274,8 +274,11 @@ namespace EO1BOA_GUI_2023242_WPF_Client
         }
 
     }
-
-    public class RestCollection<T> : INotifyCollectionChanged, IEnumerable<T>
+    public abstract class RestCollection
+    {
+        abstract public Task Refresh();
+    }
+    public class RestCollection<T> : RestCollection,INotifyCollectionChanged, IEnumerable<T>
     {
         public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
@@ -284,8 +287,10 @@ namespace EO1BOA_GUI_2023242_WPF_Client
         List<T> items;
         bool hasSignalR;
         Type type = typeof(T);
+        private Action invokeAfterInit;
 
-        public RestCollection(string baseurl, string endpoint, string hub = null)
+        public IList<RestCollection> DependentCollections { get; }
+        public RestCollection(string baseurl, string endpoint, string hub = null, IList<RestCollection> dependentCollections = null)
         {
             hasSignalR = hub != null;
             rest = new RestService(baseurl, endpoint);
@@ -296,40 +301,57 @@ namespace EO1BOA_GUI_2023242_WPF_Client
                 notify.AddHandler(type.Name + "Created", (T item) =>
                 {
                     items.Add(item);
-                    CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    Init();
                 });
 
-                notify.AddHandler(type.Name + "Deleted", (T item) =>
+                notify.AddHandler(type.Name + "Deleted", async (T item) =>
                 {
                     var element = items.FirstOrDefault(t => t.Equals(item));
                     if (element != null)
                     {
                         items.Remove(item);
-                        CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                        await Init();
+                        if (DependentCollections != null)
+                        {
+                            foreach (var restcoll in DependentCollections)
+                            {
+                                await restcoll.Refresh();
+                            }
+                        }
                     }
-                    else
-                    {
-                        Init();
-                    }
-
                 });
 
-                notify.AddHandler(type.Name + "Updated", (T item) =>
+                notify.AddHandler(type.Name + "Updated", async (T item) =>
                 {
                     Init();
+                    if (DependentCollections != null)
+                    {
+                        foreach (var restcoll in DependentCollections)
+                        {
+                            await restcoll.Refresh();
+                        }
+                    }
                 });
 
                 notify.Init();
             }
             Init();
+            DependentCollections = dependentCollections;
         }
-
+        public void SetupActionAfterInit(Action actionAfterInit)
+        {
+            invokeAfterInit = actionAfterInit;
+        }
         private async Task Init()
         {
             items = await rest.GetAsync<T>(typeof(T).Name);
             Application.Current.Dispatcher.Invoke(() =>
             {
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            });
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                invokeAfterInit?.Invoke();
             });
         }
 
@@ -406,9 +428,10 @@ namespace EO1BOA_GUI_2023242_WPF_Client
             }
 
         }
-        public async Task Refresh()
+        public override async Task Refresh()
         {
             await Init();
         }
+
     }
 }
