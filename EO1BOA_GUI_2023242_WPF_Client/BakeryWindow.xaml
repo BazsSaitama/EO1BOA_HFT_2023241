@@ -13,29 +13,30 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,533,0" Grid.RowSpan="3">
-            <Label Padding="10px" VerticalAlignment="Center">Name</Label>
-            <TextBox Height="24" ></TextBox>
-            <Label>IsDessert</Label>
-            <RadioButton GroupName="IsDessertRadio">Yes</RadioButton>
-            <RadioButton GroupName="IsDessertRadio">No</RadioButton>
-            <Label>Weight</Label>
-            <TextBox Height="31"></TextBox>
-            <Label>Bakery ID</Label>
-            <TextBox Height="33"></TextBox>
-            <Button Content="Create Bread" Padding="10" Margin="0,15,0,15"></Button>
-            <Button Content="Update Bread" Padding="10" Margin="0,15,0,15"></Button>
-            <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15"></Button>
+            <Label Padding="10px" VerticalAlignment="Center" Content="Sütő férőhelye:" FontSize="15" FontFamily="arial"></Label>
+            <TextBox Text="{Binding SelectedOven.BreadCapacity}" ></TextBox>
+            <Label Content="Sütési idő:" FontFamily="Arial" FontSize="15" Margin="0,10,0,0"></Label>
+            <TextBox Text="{Binding SelectedOven.BakingTime}"></TextBox>
+            <Label Content="Sütő Ára:" FontSize="15" FontFamily="arial" Margin="0,10,0,0"></Label>
+            <TextBox Text="{Binding SelectedOven.Price}"></TextBox>
+            <Button Content="Create Bread" Padding="10" Margin="0,15,0,15" Command="{Binding CreateOvenCommand}"></Button>
+            <Button Content="Update Bread" Padding="10" Margin="0,15,0,15" Command="{Binding UpdateOvenCommand}"></Button>
+            <Button Content="Delete Bread" Padding="10" Margin="0,15,0,15" Command="{Binding DeleteOvenCommand}"></Button>
         </StackPanel>
         <Grid Grid.Column="1">
-            <ListBox HorizontalAlignment="Stretch" Background="Transparent" ItemsSource="{Binding Breads}" SelectedItem="{Binding SelectedBread}">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,352">
+                <Label Content="Férőhely:" FontSize="12" FontFamily="roboto" FontWeight="Bold"></Label>
+                <Label Content="Idő:" FontSize="12" FontFamily="roboto" FontWeight="Bold"></Label>
+                <Label Content="Ár:" FontSize="12" FontFamily="roboto" FontWeight="Bold"></Label>
+            </StackPanel>
+            <ListBox Background="Transparent" ItemsSource="{Binding Ovens}" SelectedItem="{Binding SelectedOven}" Margin="0,29,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Label Content="{Binding Name}"></Label>
-                            <Label Content="{Binding IsDessert}"></Label>
-                            <Label Content="{Binding Weight}"></Label>
-                            <Label Content="{Binding BakeryID}"></Label>
-                        </Grid>
+                        <StackPanel Orientation="Horizontal" Background="AntiqueWhite">
+                            <Label Content="{Binding BreadCapacity}" FontSize="12" FontFamily="roboto" FontWeight="Bold"></Label>
+                            <Label Content="{Binding BakingTime}"></Label>
+                            <Label Content="{Binding Price}"></Label>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -80,7 +80,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 DeleteOvenCommand = new RelayCommand(
                     async () =>
                     {
-                        await Ovens.Delete(SelectedOven.BreadId);
+                        await Ovens.Delete(SelectedOven.OvenId);
                         await Breads.Refresh();
                         IsSelected = false;
                     },
