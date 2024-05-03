@@ -44,7 +44,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 }
                 else
                 {
-                    SelectedBread = new Bread();
+                    selectedBread = new Bread();
                     IsSelected = false;
                 }
                 (DeleteBreadCommand as RelayCommand)?.NotifyCanExecuteChanged();
@@ -65,7 +65,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
 
         public BreadViewModel(RestCollection<Bread> breads,RestCollection<Oven> ovens,RestCollection<Bakery> bakeries) 
         {
-            selectedBread = new Bread();
+            SelectedBread = new Bread();
             if (!IsInDesignMode)
             {
                 Breads = breads;
@@ -75,17 +75,17 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 CreateBreadCommand = new RelayCommand(
                     () => Breads.Add(new Bread()
                     {
-                        Name = selectedBread.Name,
-                        IsDessert = selectedBread.IsDessert,
-                        Weight = selectedBread.Weight,
-                        BakeryId = selectedBread.BakeryId
+                        Name = SelectedBread.Name,
+                        IsDessert = SelectedBread.IsDessert,
+                        Weight = SelectedBread.Weight,
+                        BakeryId = SelectedBread.BakeryId
 
                     }));
 
                 DeleteBreadCommand = new RelayCommand(
                     async () =>
                     {
-                        await Breads.Delete(selectedBread.BreadId);
+                        await Breads.Delete(SelectedBread.BreadId);
                         await Bakeries.Refresh();
                         await Ovens.Refresh();
                         IsSelected = false;
