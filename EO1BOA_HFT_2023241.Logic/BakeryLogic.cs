@@ -67,7 +67,7 @@ namespace EO1BOA_HFT_2023241.Logic
         public IQueryable<Bread> AllBreadsFromBakery(string bakery)
         {
             var breads = from b in repo.ReadAll()
-                         where b.Name == bakery
+                         where b.BakeryId.ToString() == bakery
                          from bread in b.Breads
                          select bread;
             return breads;
@@ -85,7 +85,7 @@ namespace EO1BOA_HFT_2023241.Logic
         {
             var sweets = from b in repo.ReadAll()
                          from breads in b.Breads
-                         where b.Name == bakery
+                         where b.BakeryId.ToString() == bakery
                          where breads.IsDessert == true
                          select breads;
             return sweets;

@@ -43,7 +43,7 @@ namespace EO1BOA_HFT_2023241.Endpoint.Controllers
         }
 
         [HttpGet("{bakery}")]
-        public IQueryable<Bread> AllSweetsFromBakery([FromQuery] string bakery)
+        public IQueryable<Bread> AllSweetsFromBakery(string bakery)
         {
             return logic.AllSweetsFromBakery(bakery);
         }

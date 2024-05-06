@@ -91,6 +91,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                         await Breads.Delete(SelectedBread.BreadId);
                         await Bakeries.Refresh();
                         await Ovens.Refresh();
+                        await Breads.Refresh();
                         IsSelected = false;
                     },
                     () => IsSelected == true);

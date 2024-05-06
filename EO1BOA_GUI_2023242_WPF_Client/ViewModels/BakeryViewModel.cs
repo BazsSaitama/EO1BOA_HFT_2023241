@@ -90,8 +90,8 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 DeleteBakeryCommand = new RelayCommand(
                     async () =>
                     {
-                        await Breads.Delete(SelectedBakery.BakeryId);
-                        await Breads.Refresh();
+                        await Bakeries.Delete(SelectedBakery.BakeryId);
+                        await Bakeries.Refresh();
                         IsSelected = false;
                     },
                     () => IsSelected == true);
@@ -104,6 +104,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 BreadsInBakeryCommand = new RelayCommand(
                     () => 
                     {
+                        BreadsNonCrud.Clear();
                         var a = NonCrud.Get<Bread>($"/NonCrud/AllBreadsFromBakery/{SelectedBakery.BakeryId}");
                         foreach (var item in a)
                         {
@@ -115,6 +116,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 SweetsCommand = new RelayCommand(
                     () =>
                     {
+                        SweetsNonCrud.Clear();
                         var a = NonCrud.Get<Bread>($"/NonCrud/AllSweetsFromBakery/{SelectedBakery.BakeryId}");
                         foreach (var item in a)
                         {

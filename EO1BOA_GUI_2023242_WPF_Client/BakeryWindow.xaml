@@ -61,7 +61,7 @@
                 <Label></Label>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <Label Content="Sütők: (Ár)" FontSize="15" Background="Orange"></Label>
+                <Label Content="Kenyerek a pékségben" FontSize="15" Background="Orange"></Label>
                 <ListBox ItemsSource="{Binding BreadsNonCrud}" HorizontalContentAlignment="Stretch" Height="185">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
