@@ -55,6 +55,7 @@ namespace EO1BOA_HFT_2023241.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            
             app.UseCors(x => x
              .AllowCredentials()
              .AllowAnyMethod()
@@ -62,6 +63,7 @@ namespace EO1BOA_HFT_2023241.Endpoint
              .WithOrigins("http://localhost:39340"));
 
             app.UseRouting();
+            app.UseStaticFiles();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
