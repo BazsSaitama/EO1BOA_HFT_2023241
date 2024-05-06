@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EO1BOA_HFT_2023241.Repository
 {
-    public class BreadRepository : Repository<Bread>
+    public class BreadRepository : Repository<Bread>, IRepository<Bread>
     {
         public BreadRepository(BakeryDbContext ctor) : base(ctor)
         {

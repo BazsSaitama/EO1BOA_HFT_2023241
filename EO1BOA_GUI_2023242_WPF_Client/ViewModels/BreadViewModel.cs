@@ -34,6 +34,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 if (value != null)
                 {
                     selectedBread = new Bread();
+                    selectedBread.BreadId = value.BreadId;
                     selectedBread.Name = value.Name;
                     selectedBread.IsDessert = value.IsDessert;
                     selectedBread.Weight = value.Weight;
