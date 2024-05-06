@@ -34,6 +34,7 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
                 {
                     selectedOven = new Oven();
                     selectedOven.BreadCapacity = value.BreadCapacity;
+                    selectedOven.OvenId = value.OvenId;
                     selectedOven.BakingTime = value.BakingTime;
                     selectedOven.Price = value.Price;
 

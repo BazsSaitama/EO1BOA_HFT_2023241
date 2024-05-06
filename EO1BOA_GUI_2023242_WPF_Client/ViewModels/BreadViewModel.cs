@@ -67,6 +67,8 @@ namespace EO1BOA_GUI_2023242_WPF_Client.ViewModels
         public BreadViewModel(RestCollection<Bread> breads,RestCollection<Oven> ovens,RestCollection<Bakery> bakeries) 
         {
             SelectedBread = new Bread();
+
+
             if (!IsInDesignMode)
             {
                 Breads = breads;
