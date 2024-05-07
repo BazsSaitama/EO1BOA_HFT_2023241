@@ -4,7 +4,7 @@ table {
     width:30%;
 }
 
-.UpdateForm{
+#UpdateForm{
     background-color: grey;
     flex-direction: column;
     display: none;

@@ -60,7 +60,7 @@ function display() {
         document.getElementById('BreadResults').innerHTML +=
             "<tr><td>" + t.breadId + "</td><td>" + t.name + "</td><td>" + t.isDessert + "</td><td>" + t.weight + "</td><td>" + t.bakeryId + "</td><td>"
             + `<button type="button" onclick="remove(${t.breadId})">Delete</button>`
-            +`<button>Update</button>`
+            +`<button type="button" onclick="showupdate(${t.breadId})">Update</button>`
             + " </td></tr>";
     });
 }
@@ -99,4 +99,31 @@ function remove(id) {
         })
         .catch((error) => { console.error('Error:', error); });
 
+}
+
+function showupdate(id) {
+    document.getElementById('BreadUpdateName').value = breads.find(t => t['breadId'] == id)['name'];
+    document.getElementById('BreadUpdateWeight').value = breads.find(t => t['breadId'] == id)['weight'];
+    document.getElementById('BreadUpdateBakery').value = breads.find(t => t['breadId'] == id)['bakeryId'];
+    document.getElementById('UpdateForm').style.display = 'flex';
+    breadIdToUpdate = id;
+}
+
+function Update() {
+    document.getElementById('UpdateForm').style.display = 'none';
+    let breadname = document.getElementById('BreadUpdateName').value;
+    let breadweight = document.getElementById('BreadUpdateWeight').value;
+    let breadbakery = document.getElementById('BreadUpdateBakery').value;
+    fetch('http://localhost:39340/Bread', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { name: breadname, weight: breadweight, breadId: breadIdToUpdate, bakeryId : breadbakery})
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
 }

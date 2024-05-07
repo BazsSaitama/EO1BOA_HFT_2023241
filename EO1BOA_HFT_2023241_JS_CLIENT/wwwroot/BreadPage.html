@@ -18,15 +18,15 @@
         <button onclick="Create()">Add Bread</button>
     </div>
 
-    <div class="UpdateForm">
+    <div id="UpdateForm">
         <label>Bread name</label>
-        <input type="text" class="inputClass" />
+        <input type="text" class="inputClass" id="BreadUpdateName"/>
         <Label>Weight</Label>
-        <input type="text" class="inputClass" />
+        <input type="text" class="inputClass" id="BreadUpdateWeight"/>
         <Label>Bakery?(ID)</Label>
-        <input type="text" />
+        <input type="text" class="inputClass" id="BreadUpdateBakery"/>
 
-        <button onclick="Update()">Add Bread</button>
+        <button type="button" onclick="Update()">Update Bread</button>
     </div>
 
     <table class="ResultsTable">
