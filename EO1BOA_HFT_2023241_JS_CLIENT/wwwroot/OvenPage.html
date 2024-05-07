@@ -3,25 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <title>Oven Page</title>
+    <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Oven Page</h1>
-    <div class="Labels"><p>Oven name</p></div>
-    <input type="text" name="" value="" />
-    <button>Add Oven</button>
+    <h1>Oven oldal</h1>
+    <div class="CreateForm">
+        <label>Baking Time</label>
+        <input type="text" class="inputClass" id="OvenBakingTime" />
+        <Label>Capacity</Label>
+        <input type="text" class="inputClass" id="OvenCapacity" />
+        <Label>Oven's Price</Label>
+        <input type="text" class="inputClass" id="OvenPrice" />
 
-    <table>
+        <button onclick="Create()">Add Oven</button>
+    </div>
+
+    <div id="UpdateForm">
+        <label>Baking Time</label>
+        <input type="text" class="inputClass" id="OvenUpdateBaking" />
+        <Label>Capacity</Label>
+        <input type="text" class="inputClass" id="OvenUpdateCapacity" />
+        <Label>Oven's Price</Label>
+        <input type="text" class="inputClass" id="OvenUpdatePrice" />
+
+        <button type="button" onclick="Update()">Update Oven</button>
+    </div>
+
+    <table class="ResultsTable">
         <thead>
             <tr>
                 <td>Id</td>
-                <td>Capacity</td>
                 <td>Baking Time</td>
+                <td>Capacity</td>
                 <td>Price</td>
             </tr>
         </thead>
+        <tbody id="OvenResults">
+        </tbody>
     </table>
 
     <div><button onclick="Back()">Vissza</button></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="Oven.js"></script>
 </body>

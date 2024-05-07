@@ -18,7 +18,7 @@ namespace EO1BOA_HFT_2023241.Models
         public int BakingTime { get; set; } //Hour
         public double Price { get; set; } //Mft
 
-        [ForeignKey("Bread")]
+        [ForeignKey(nameof(Bread))]
         public int BreadId { get; set; }
 
         [NotMapped]

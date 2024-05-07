@@ -5,20 +5,41 @@
     <title>Bakery Page</title>
 </head>
 <body>
-    <h1>Bakery oldal</h1>
-    <div class="Labels"><p>Bakery name</p></div>
-    <input type="text" name="" value="" />
-    <button>Add Bakery</button>
+    <h1>Bread oldal</h1>
+    <div class="CreateForm">
+        <label>Bread name</label>
+        <input type="text" class="inputClass" id="BreadName" />
+        <Label>Weight</Label>
+        <input type="text" class="inputClass" id="BreadWeight" />
+        <Label>Bakery?(ID)</Label>
+        <input type="text" class="inputClass" id="BreadBakeryId" />
 
-    <table>
+        <button onclick="Create()">Add Bread</button>
+    </div>
+
+    <div id="UpdateForm">
+        <label>Bread name</label>
+        <input type="text" class="inputClass" id="BreadUpdateName" />
+        <Label>Weight</Label>
+        <input type="text" class="inputClass" id="BreadUpdateWeight" />
+        <Label>Bakery?(ID)</Label>
+        <input type="text" class="inputClass" id="BreadUpdateBakery" />
+
+        <button type="button" onclick="Update()">Update Bread</button>
+    </div>
+
+    <table class="ResultsTable">
         <thead>
             <tr>
                 <td>Id</td>
                 <td>Name</td>
-                <td>Location</td>
-                <td>Rating</td>
+                <td>IsDessert</td>
+                <td>Weight</td>
+                <td>BakeryID</td>
             </tr>
         </thead>
+        <tbody id="BreadResults">
+        </tbody>
     </table>
 
     <div><button onclick="Back()">Vissza</button></div>
