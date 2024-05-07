@@ -3,14 +3,37 @@
 <head>
     <meta charset="utf-8" />
     <title>Bread Page</title>
+    <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Bread oldal</h1>
-    <div class="Labels"><p>Bread name</p></div>
-    <input type="text" name="" value="" />
-    <button>Add Bread</button>
+    <div class="CreateForm">
+        <label>Bread name</label>
+        <input type="text" class="inputClass" id="BreadName" />
+        <Label>Dessert?</Label>
+        <input type="text" class="inputClass" id="BreadDessert"/>
+        <Label>Weight</Label>
+        <input type="text" class="inputClass" id="BreadWeight"/>
+        <Label>Bakery?(ID)</Label>
+        <input type="text" class="inputClass" id="BreadBakeryId"/>
 
-    <table>
+        <button onclick="Create()">Add Bread</button>
+    </div>
+
+    <div class="UpdateForm">
+        <label>Bread name</label>
+        <input type="text" class="inputClass" />
+        <Label>Dessert?</Label>
+        <input type="text" class="inputClass" />
+        <Label>Weight</Label>
+        <input type="text" class="inputClass" />
+        <Label>Bakery?(ID)</Label>
+        <input type="text" />
+
+        <button onclick="Update()">Add Bread</button>
+    </div>
+
+    <table class="ResultsTable">
         <thead>
             <tr>
                 <td>Id</td>
@@ -20,6 +43,9 @@
                 <td>BakeryID</td>
             </tr>
         </thead>
+        <tbody id="BreadResults">
+
+        </tbody>
     </table>
 
     <div><button onclick="Back()">Vissza</button></div>

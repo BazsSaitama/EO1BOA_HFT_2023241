@@ -1,2 +1,24 @@
 ﻿body {
 }
+table {
+    width:30%;
+}
+
+.UpdateForm{
+    background-color: grey;
+    flex-direction: column;
+    display: none;
+}
+
+.CreateForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+    .CreateForm label {
+        font-family: 'Sans Serif Collection';
+    }
+    .CreateForm input {
+        margin-bottom: 10px;
+    }
