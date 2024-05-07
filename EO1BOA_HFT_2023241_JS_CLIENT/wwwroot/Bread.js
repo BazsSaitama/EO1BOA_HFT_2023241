@@ -55,35 +55,37 @@ async function getdata() {
 
 function display() {
     document.getElementById('BreadResults').innerHTML = "";
+    
     breads.forEach(t => {
         document.getElementById('BreadResults').innerHTML +=
             "<tr><td>" + t.breadId + "</td><td>" + t.name + "</td><td>" + t.isDessert + "</td><td>" + t.weight + "</td><td>" + t.bakeryId + "</td><td>"
-            + `<button type="button" onclick="remove(${t.id})">Delete</button>`
+            + `<button type="button" onclick="remove(${t.breadId})">Delete</button>`
             +`<button>Update</button>`
             + " </td></tr>";
-        //console.log(t.name);
     });
 }
 
 function Create() {
     let breadname = document.getElementById('BreadName').value;
-    let breaddessert = document.getElementById('BreadDessert').value;
     let breadweight = document.getElementById('BreadWeight').value;
     let breadbakeryid = document.getElementById('BreadBakeryId').value;
+
+    let asd = JSON.stringify({ bakeryId: breadbakeryid,name: breadname, weight: breadweight });
+
     fetch('http://localhost:39340/Bread', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify(
-            { bakeryId: breadbakeryid, isDessert: breaddessert}),
+        body: asd,
     })  .then(response => response)
         .then(data => {
             console.log('Success:', data);
             getdata();
         })
-        .catch((error) => { console.error('Error:', error); });
+    .catch((error) => { console.error('Error:', error); });
 }
 
 function remove(id) {
+    console.log(id);
     fetch('http://localhost:39340/Bread/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
