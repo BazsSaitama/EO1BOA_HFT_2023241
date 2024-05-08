@@ -3,29 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <title>Bakery Page</title>
+    <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Bread oldal</h1>
+    <h1>Bakery oldal</h1>
     <div class="CreateForm">
-        <label>Bread name</label>
-        <input type="text" class="inputClass" id="BreadName" />
-        <Label>Weight</Label>
-        <input type="text" class="inputClass" id="BreadWeight" />
-        <Label>Bakery?(ID)</Label>
-        <input type="text" class="inputClass" id="BreadBakeryId" />
+        <label>Bakery name</label>
+        <input type="text" class="inputClass" id="BakeryName" />
+        <Label>Location</Label>
+        <input type="text" class="inputClass" id="BakeryLocation" />
+        <Label>Bakery's Rating</Label>
+        <input type="text" class="inputClass" id="BakeryRating" />
 
-        <button onclick="Create()">Add Bread</button>
+        <button onclick="Create()">Add Bakery</button>
     </div>
 
     <div id="UpdateForm">
-        <label>Bread name</label>
-        <input type="text" class="inputClass" id="BreadUpdateName" />
-        <Label>Weight</Label>
-        <input type="text" class="inputClass" id="BreadUpdateWeight" />
-        <Label>Bakery?(ID)</Label>
-        <input type="text" class="inputClass" id="BreadUpdateBakery" />
+        <label>Bakery name</label>
+        <input type="text" class="inputClass" id="BakeryUpdateName" />
+        <Label>Location</Label>
+        <input type="text" class="inputClass" id="BakeryUpdateLocation" />
+        <Label>Bakery's Rating</Label>
+        <input type="text" class="inputClass" id="BakeryUpdateRating" />
 
-        <button type="button" onclick="Update()">Update Bread</button>
+        <button type="button" onclick="Update()">Update Bakery</button>
     </div>
 
     <table class="ResultsTable">
@@ -33,12 +34,11 @@
             <tr>
                 <td>Id</td>
                 <td>Name</td>
-                <td>IsDessert</td>
-                <td>Weight</td>
-                <td>BakeryID</td>
+                <td>Location</td>
+                <td>Rating</td>
             </tr>
         </thead>
-        <tbody id="BreadResults">
+        <tbody id="BakeryResults">
         </tbody>
     </table>
 

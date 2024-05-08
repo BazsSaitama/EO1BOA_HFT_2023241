@@ -1,9 +1,9 @@
 ﻿function Back() {
     window.location.href = "index.html";
 }
-let breads = [];
+let bakeries = [];
 let connection = null;
-let breadIdToUpdate = -1;
+let bakeryIdToUpdate = -1;
 getdata();
 setupSignalR();
 
@@ -13,15 +13,15 @@ function setupSignalR() {
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    connection.on("BreadCreated", (user, message) => {
+    connection.on("BakeryCreated", (user, message) => {
         getdata();
     });
 
-    connection.on("BreadDeleted", (user, message) => {
+    connection.on("BakeryDeleted", (user, message) => {
         getdata();
     });
 
-    connection.on("BreadUpdated", (user, message) => {
+    connection.on("BakeryUpdated", (user, message) => {
         getdata();
     });
 
@@ -44,35 +44,35 @@ async function start() {
 
 async function getdata() {
 
-    await fetch("http://localhost:39340/Bread")
+    await fetch("http://localhost:39340/Bakery")
         .then(x => x.json())
         .then(y => {
-            breads = y;
-            console.log(breads);
+            bakeries = y;
+            console.log(bakeries);
             display();
         });
 }
 
 function display() {
-    document.getElementById('BreadResults').innerHTML = "";
+    document.getElementById('BakeryResults').innerHTML = "";
 
-    breads.forEach(t => {
-        document.getElementById('BreadResults').innerHTML +=
-            "<tr><td>" + t.breadId + "</td><td>" + t.name + "</td><td>" + t.isDessert + "</td><td>" + t.weight + "</td><td>" + t.bakeryId + "</td><td>"
-            + `<button type="button" onclick="remove(${t.breadId})">Delete</button>`
-            + `<button type="button" onclick="showupdate(${t.breadId})">Update</button>`
+    bakeries.forEach(t => {
+        document.getElementById('BakeryResults').innerHTML +=
+            "<tr><td>" + t.bakeryId + "</td><td>" + t.name + "</td><td>" + t.location + "</td><td>" + t.rating + "</td><td>"
+            + `<button type="button" onclick="remove(${t.bakeryId})">Delete</button>`
+            + `<button type="button" onclick="showupdate(${t.bakeryId})">Update</button>`
             + " </td></tr>";
     });
 }
 
 function Create() {
-    let breadname = document.getElementById('BreadName').value;
-    let breadweight = document.getElementById('BreadWeight').value;
-    let breadbakeryid = document.getElementById('BreadBakeryId').value;
+    let bakeryname = document.getElementById('BakeryName').value;
+    let bakerylocation = document.getElementById('BakeryLocation').value;
+    let bakeryrating = document.getElementById('BakeryRating').value;
 
-    let asd = JSON.stringify({ bakeryId: breadbakeryid, name: breadname, weight: breadweight });
+    let asd = JSON.stringify({ name:bakeryname,location:bakerylocation,rating:bakeryrating });
 
-    fetch('http://localhost:39340/Bread', {
+    fetch('http://localhost:39340/Bakery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: asd,
@@ -86,7 +86,7 @@ function Create() {
 
 function remove(id) {
     console.log(id);
-    fetch('http://localhost:39340/Bread/' + id, {
+    fetch('http://localhost:39340/Bakery/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -102,23 +102,23 @@ function remove(id) {
 }
 
 function showupdate(id) {
-    document.getElementById('BreadUpdateName').value = breads.find(t => t['breadId'] == id)['name'];
-    document.getElementById('BreadUpdateWeight').value = breads.find(t => t['breadId'] == id)['weight'];
-    document.getElementById('BreadUpdateBakery').value = breads.find(t => t['breadId'] == id)['bakeryId'];
+    document.getElementById('BakeryUpdateName').value = bakeries.find(t => t['bakeryId'] == id)['name'];
+    document.getElementById('BakeryUpdateLocation').value = bakeries.find(t => t['bakeryId'] == id)['location'];
+    document.getElementById('BakeryUpdateRating').value = bakeries.find(t => t['bakeryId'] == id)['rating'];
     document.getElementById('UpdateForm').style.display = 'flex';
-    breadIdToUpdate = id;
+    bakeryIdToUpdate = id;
 }
 
 function Update() {
     document.getElementById('UpdateForm').style.display = 'none';
-    let breadname = document.getElementById('BreadUpdateName').value;
-    let breadweight = document.getElementById('BreadUpdateWeight').value;
-    let breadbakery = document.getElementById('BreadUpdateBakery').value;
-    fetch('http://localhost:39340/Bread', {
+    let bakeryname = document.getElementById('BakeryUpdateName').value;
+    let bakerylocation = document.getElementById('BakeryUpdateLocation').value;
+    let bakeryrating = document.getElementById('BakeryUpdateRating').value;
+    fetch('http://localhost:39340/Bakery', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name: breadname, weight: breadweight, breadId: breadIdToUpdate, bakeryId: breadbakery })
+            {bakeryId:bakeryIdToUpdate,name:bakeryname,location:bakerylocation,rating:bakeryrating })
     })
         .then(response => response)
         .then(data => {
