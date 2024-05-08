@@ -1,7 +1,14 @@
 ﻿body {
+    color: white;
+    background-color: black;
 }
 table {
     width:30%;
+}
+.NonCrudDiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 #UpdateForm{
@@ -16,9 +23,14 @@ table {
     margin-bottom: 20px;
 
 }
-    .CreateForm label {
-        font-family: 'Sans Serif Collection';
-    }
-    .CreateForm input {
-        margin-bottom: 10px;
-    }
+.CreateForm label {
+    font-family: 'Sans Serif Collection';
+}
+.CreateForm input {
+    margin-bottom: 10px;
+}
+h1 {
+    background-color: lightblue;
+    color:yellow;
+    font-weight:bold;
+}

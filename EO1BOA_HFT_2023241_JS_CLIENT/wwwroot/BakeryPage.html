@@ -18,6 +18,19 @@
         <button onclick="Create()">Add Bakery</button>
     </div>
 
+    <div class="NonCrudDiv">
+        <input type="text" class="inputClass" id="AllSweets" />
+        <button onclick="AllSweets()">All Sweets in a Bakery(ID)</button>
+        <input type="text" class="inputClass" id="AllBreads" />
+        <button onclick="AllBreads()">All Breads in a Bakery(ID)</button>
+
+        <button onclick="LightestBread()">The Lightest Bread</button>
+    </div>
+
+    <div id="NonCrudResults">
+        <p id="NonCrudP"></p>
+    </div>
+
     <div id="UpdateForm">
         <label>Bakery name</label>
         <input type="text" class="inputClass" id="BakeryUpdateName" />
@@ -28,6 +41,7 @@
 
         <button type="button" onclick="Update()">Update Bakery</button>
     </div>
+
 
     <table class="ResultsTable">
         <thead>

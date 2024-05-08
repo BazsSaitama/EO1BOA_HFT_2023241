@@ -127,3 +127,49 @@ function Update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
+/*NONCRUD*/ 
+async function AllSweets()
+{
+    let allsweets = document.getElementById('AllSweets').value;
+    let p = document.getElementById('NonCrudP');
+    p.innerText = "";
+    let allsweetstomb = []
+    await fetch("http://localhost:39340/NonCrud/AllSweetsFromBakery/" + allsweets)
+        .then(x => x.json())
+        .then(y => {
+            allsweetstomb = y;
+
+        }).catch(error => { console.error('Error:', error); });
+
+    allsweetstomb.forEach(t => {p.innerText += ", " + t.name })
+}
+
+async function AllBreads()
+{
+    let breads = document.getElementById('AllBreads').value;
+    let p = document.getElementById('NonCrudP');
+    p.innerText = "";
+    let allbreadstomb = []
+    await fetch("http://localhost:39340/NonCrud/AllBreadsFromBakery/" + breads)
+        .then(x => x.json())
+        .then(y => {
+            allbreadstomb = y;
+
+        }).catch(error => { console.error('Error:', error); });
+
+    allbreadstomb.forEach(t => { p.innerText += ", " + t.name })
+}
+
+async function LightestBread()
+{
+    let asd = document.getElementById('NonCrudP');
+    asd.innerText = "";
+    await fetch("http://localhost:39340/NonCrud/LightestBread")
+        .then(x => x.json())
+        .then(y => {
+            asd.innerText = "The lightest bread: " + y.name;
+            console.log("Lightest Bread: " +y.name)
+
+        }).catch(error => { console.error('Error:', error); });
+}
