@@ -32,7 +32,7 @@
                             <Label Content="{Binding Name}" FontSize="12" FontFamily="roboto" FontWeight="Bold"></Label>
                             <Label Content="{Binding IsDessert}"></Label>
                             <Label Content="{Binding Weight}"></Label>
-                            <Label Content="{Binding BakeryID}"></Label>
+                            <Label Content="{Binding BakeryId}"></Label>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

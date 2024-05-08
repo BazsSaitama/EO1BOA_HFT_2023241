@@ -24,7 +24,7 @@ namespace EO1BOA_HFT_2023241.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Bread>(x => x.HasOne(y => y.Bakery).WithMany(z => z.Breads).HasForeignKey(t => t.BakeryId).OnDelete(DeleteBehavior.Cascade));
-            modelBuilder.Entity<Oven>(x=>x.HasOne(y=>y.Bread).WithMany(z=>z.Ovens).HasForeignKey(t=>t.OvenId).OnDelete(DeleteBehavior.Cascade));
+            modelBuilder.Entity<Oven>(x=>x.HasOne(y=>y.Bread).WithMany(z=>z.Ovens).HasForeignKey(t=>t.BreadId).OnDelete(DeleteBehavior.Cascade));
 
 
             //DbSeed
