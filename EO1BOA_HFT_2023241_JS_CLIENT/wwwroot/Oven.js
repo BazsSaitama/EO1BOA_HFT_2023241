@@ -86,7 +86,7 @@ function Create() {
 
 function remove(id) {
     console.log(id);
-    fetch('http://localhost:39340/Bread/' + id, {
+    fetch('http://localhost:39340/Oven/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -102,23 +102,23 @@ function remove(id) {
 }
 
 function showupdate(id) {
-    document.getElementById('BreadUpdateName').value = breads.find(t => t['breadId'] == id)['name'];
-    document.getElementById('BreadUpdateWeight').value = breads.find(t => t['breadId'] == id)['weight'];
-    document.getElementById('BreadUpdateBakery').value = breads.find(t => t['breadId'] == id)['bakeryId'];
+    document.getElementById('OvenUpdateBaking').value = ovens.find(t => t['ovenId'] == id)['bakingTime'];
+    document.getElementById('OvenUpdatePrice').value = ovens.find(t => t['ovenId'] == id)['price'];
+    document.getElementById('OvenUpdateCapacity').value = ovens.find(t => t['ovenId'] == id)['breadCapacity'];
     document.getElementById('UpdateForm').style.display = 'flex';
-    breadIdToUpdate = id;
+    ovenIdToUpdate = id;
 }
 
 function Update() {
     document.getElementById('UpdateForm').style.display = 'none';
-    let breadname = document.getElementById('BreadUpdateName').value;
-    let breadweight = document.getElementById('BreadUpdateWeight').value;
-    let breadbakery = document.getElementById('BreadUpdateBakery').value;
-    fetch('http://localhost:39340/Bread', {
+    let ovenbaking = document.getElementById('OvenUpdateBaking').value;
+    let ovenprice = document.getElementById('OvenUpdatePrice').value;
+    let ovencapacity = document.getElementById('OvenUpdateCapacity').value;
+    fetch('http://localhost:39340/Oven', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name: breadname, weight: breadweight, breadId: breadIdToUpdate, bakeryId: breadbakery })
+            { ovenId: ovenIdToUpdate,breadCapacity:ovencapacity,bakingTime:ovenbaking,price:ovenprice })
     })
         .then(response => response)
         .then(data => {
