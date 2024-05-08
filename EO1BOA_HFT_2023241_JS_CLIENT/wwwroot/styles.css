@@ -29,8 +29,8 @@ table {
 .CreateForm input {
     margin-bottom: 10px;
 }
-h1 {
-    background-color: lightblue;
-    color:yellow;
-    font-weight:bold;
+#buttondiv{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }

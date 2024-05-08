@@ -163,12 +163,12 @@ async function AllBreads()
 
 async function LightestBread()
 {
-    let asd = document.getElementById('NonCrudP');
-    asd.innerText = "";
+    let p = document.getElementById('NonCrudP');
+    p.innerText = "";
     await fetch("http://localhost:39340/NonCrud/LightestBread")
         .then(x => x.json())
         .then(y => {
-            asd.innerText = "The lightest bread: " + y.name;
+            p.innerText = "The lightest bread: " + y.name;
             console.log("Lightest Bread: " +y.name)
 
         }).catch(error => { console.error('Error:', error); });
